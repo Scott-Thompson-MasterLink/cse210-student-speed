@@ -40,4 +40,5 @@ root                    (project root folder)
 
 ## Authors
 ---
-* # TODO: Add names and emails here
+Scott Thompson: Scottathompson98@gmail.com
+
