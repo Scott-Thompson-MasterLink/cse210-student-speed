@@ -40,5 +40,10 @@ root                    (project root folder)
 
 ## Authors
 ---
+
+
+
+Nathan Muller - nmuller005@gmail.com
 Scott Thompson: Scottathompson98@gmail.com
+
 
