@@ -1,10 +1,10 @@
 import random
 from time import sleep
 from game import constants
-# from game.food import Food
 from game.words import Word
 from game.score import Score
-# from game.snake import Snake
+from game.buffer import Buffer
+
 
 class Director:
     """A code template for a person who directs the game. The responsibility of 
@@ -36,6 +36,7 @@ class Director:
         self._keep_playing = True
         self._output_service = output_service
         self._score = Score()
+        self._buffer = Buffer()
         # self._snake = Snake()
         
     def start_game(self):
@@ -57,8 +58,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        # direction = self._input_service.get_direction()
-        # self._snake.move_head(direction)
+        
+        self._buffer.set_input(self._input_service.get_letter())
+
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -67,11 +69,11 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        # self._handle_body_collision()
-        # self._handle_food_collision()
+
+        
         for i in self._words:
             i.set_word_velocity()
-            i.compare_word(placeholder)
+            self._score.add_points(i.compare_word(self._buffer.get_input())) 
         
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -82,10 +84,9 @@ class Director:
             self (Director): An instance of Director.
         """
         self._output_service.clear_screen()
-        # self._output_service.draw_actor(self._food)
         self._output_service.draw_actors(self._words)
-        # self._output_service.draw_actors(self._snake.get_all())
         self._output_service.draw_actor(self._score)
+        self._output_service.draw_actor(self._buffer)
         self._output_service.flush_buffer()
 
     # def _handle_body_collision(self):

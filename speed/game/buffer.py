@@ -4,7 +4,7 @@ from game.actor import Actor
 from game.point import Point
 from game.input_service import InputService
 
-class Buffer(Actor, InputService):
+class Buffer(Actor):
     """The Buffer's responsability is to keep track of the user's inputs and display them in the formatted output.
 
     Attributes:
@@ -20,7 +20,7 @@ class Buffer(Actor, InputService):
         Args:
             self (Director): an instance of Director.
         """
-        self._points = 0     
+        # self._points = 0     
         self._position = Point(1, constants.MAX_Y)
         self._inputs = ''
         self._buffer = super().set_text(f'Buffer: {self._inputs}')
@@ -37,7 +37,7 @@ class Buffer(Actor, InputService):
         
         return self._inputs
 
-    def set_input(self):
+    def set_input(self, letter):
         """Updates the buffer text to the given value.
         
         Args:
@@ -45,37 +45,39 @@ class Buffer(Actor, InputService):
             letter (string): The given value.
         """
 
-        letter = super().get_letter()
         if letter == '*':
             self._inputs = ''
+            self._buffer = super().set_text(f'Buffer: ')
         else:
-            self._inputs = letter
+            self._inputs += letter
+
+        self._buffer = super().set_text(f'Buffer: {self._inputs}')
 
     #for Director within _get_inputs(self): self._buffer.set_input()
 
-    def get_points(self):
-        """Gets the points.
+    # def get_points(self):
+    #     """Gets the points.
         
-        Args:
-            self (Buffer): an instance of Buffer.
+    #     Args:
+    #         self (Buffer): an instance of Buffer.
 
-        Returns:
-            points: the points obtained 
-        """
+    #     Returns:
+    #         points: the points obtained 
+    #     """
 
-        return self._points
+    #     return self._points
 
-    def set_points(self):
-        """Sets the points.
+    # def set_points(self):
+    #     """Sets the points.
         
-        Args:
-            self (Buffer): an instance of Buffer.
+    #     Args:
+    #         self (Buffer): an instance of Buffer.
 
-        Returns:
-            points: random points obtained 
-        """
+    #     Returns:
+    #         points: random points obtained 
+    #     """
 
-        self._points += random.randint(1, 5)
+    #     self._points += random.randint(1, 5)
 
 
     

@@ -41,8 +41,8 @@ root                    (project root folder)
 ## Authors
 ---
 
-
-
+Matias Rodriguez - maturod96@gmail.com
+Gilles Mambou - gillesravelmambou@gmail.com
 Nathan Muller - nmuller005@gmail.com
 Scott Thompson: Scottathompson98@gmail.com
 

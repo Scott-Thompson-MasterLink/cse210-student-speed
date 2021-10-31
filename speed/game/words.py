@@ -2,7 +2,6 @@ import random
 from game.actor import Actor
 from game.point import Point
 from game import constants
-from speed.game import score
 
 words = constants.LIBRARY
 
